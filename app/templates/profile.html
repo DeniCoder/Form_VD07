@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<h2>Редактирование профиля</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name.label }} {{ form.name(class="form-control") }}
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.email.label }} {{ form.email(class="form-control") }}
+        {% for error in form.email.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.password.label }} {{ form.password(class="form-control") }}
+        {% for error in form.password.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+</form>
+<a href="{{ url_for('main.logout') }}">Выйти</a>
+{% endblock %}
